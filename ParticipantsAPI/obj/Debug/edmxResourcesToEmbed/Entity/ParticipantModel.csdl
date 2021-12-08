@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="INTERNModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Participant">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobilenumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Middlename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Address2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Pincode" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="E_q" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Tpwd" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="INTERNEntities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Participants" EntityType="Self.Participant" />
+    <FunctionImport Name="AddParticipant" ReturnType="Collection(INTERNModel.AddParticipant_Result)">
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Mobilenumber" Mode="In" Type="String" />
+      <Parameter Name="Firstname" Mode="In" Type="String" />
+      <Parameter Name="Middlename" Mode="In" Type="String" />
+      <Parameter Name="Lastname" Mode="In" Type="String" />
+      <Parameter Name="Address1" Mode="In" Type="String" />
+      <Parameter Name="Address2" Mode="In" Type="String" />
+      <Parameter Name="Pincode" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="State" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="E_q" Mode="In" Type="String" />
+      <Parameter Name="Tpwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CheckParticipant" ReturnType="Collection(INTERNModel.CheckParticipant_Result)">
+      <Parameter Name="Username" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllP" ReturnType="Collection(INTERNModel.GetAllP_Result)" />
+    <FunctionImport Name="GetParticipant" ReturnType="Collection(INTERNModel.GetParticipant_Result)">
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateParticipant" ReturnType="Collection(INTERNModel.UpdateParticipant_Result)">
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Mobilenumber" Mode="In" Type="String" />
+      <Parameter Name="Firstname" Mode="In" Type="String" />
+      <Parameter Name="Middlename" Mode="In" Type="String" />
+      <Parameter Name="Lastname" Mode="In" Type="String" />
+      <Parameter Name="Address1" Mode="In" Type="String" />
+      <Parameter Name="Address2" Mode="In" Type="String" />
+      <Parameter Name="Pincode" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="State" Mode="In" Type="String" />
+      <Parameter Name="Country" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="E_q" Mode="In" Type="String" />
+      <Parameter Name="Tpwd" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="AddParticipant_Result">
+    <Property Type="String" Name="InsertMsg" Nullable="true" MaxLength="60" />
+    <Property Type="Boolean" Name="ParticipantAlreadyexist" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CheckParticipant_Result">
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Mobilenumber" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Firstname" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Middlename" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Lastname" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Address1" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Address2" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Pincode" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="State" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="E_q" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Tpwd" Nullable="true" MaxLength="4" />
+  </ComplexType>
+  <ComplexType Name="GetAllP_Result">
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Mobilenumber" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Firstname" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Middlename" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Lastname" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Address1" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Address2" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Pincode" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="State" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="E_q" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Tpwd" Nullable="true" MaxLength="4" />
+  </ComplexType>
+  <ComplexType Name="GetParticipant_Result">
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Mobilenumber" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Firstname" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Middlename" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Lastname" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Address1" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Address2" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Pincode" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="State" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="E_q" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Tpwd" Nullable="true" MaxLength="4" />
+  </ComplexType>
+  <ComplexType Name="UpdateParticipant_Result">
+    <Property Type="String" Name="UpdateMsg" Nullable="true" MaxLength="60" />
+    <Property Type="Boolean" Name="ParticipantAlreadyExists" Nullable="true" />
+  </ComplexType>
+</Schema>
